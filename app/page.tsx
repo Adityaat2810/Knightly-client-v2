@@ -34,6 +34,7 @@ export default function HomePage() {
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                   Knightly
                 </h1>
+
                 <p className="text-2xl md:text-3xl text-muted-foreground">
                   Play Chess in Real-Time
                 </p>
@@ -47,7 +48,10 @@ export default function HomePage() {
 
               <div className="flex flex-wrap gap-4">
                 <Link href="/game">
-                  <Button size="lg" className="text-lg px-8 py-6 shadow-medium hover:shadow-soft transition-all">
+                  <Button
+                    variant="outline" size="lg"
+                    className="bg-[#48b8cc80] text-lg px-8 py-6 shadow-medium hover:shadow-soft transition-all"
+                  >
                     Start Playing
                   </Button>
                 </Link>
@@ -119,7 +123,14 @@ export default function HomePage() {
           <div className="bg-muted rounded-3xl p-12 text-center space-y-6">
             <div className="max-w-3xl mx-auto space-y-4">
               <p className="text-sm uppercase tracking-wider text-muted-foreground font-medium">
-                [Image Placeholder]
+                <Image
+                  src="/assets/knightly-2.png"
+                  alt="Knightly mascot - a cheerful knight character holding a smartphone displaying a chess game with the text 'Checkmate in seconds'"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto rounded-2xl shadow-medium"
+                  priority
+                />
               </p>
               <h3 className="text-3xl font-bold text-foreground">
                 Sketchy Chess Pieces Illustration

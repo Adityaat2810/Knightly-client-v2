@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
+import Image from "next/image";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -31,13 +32,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={dmSans.variable}>
       <body className="min-h-screen flex flex-col">
         {/* Navigation */}
-        <nav className="bg-background/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+        <nav className="bg-background/80 backdrop-blur-sm  border-border sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2">
                 <div className="text-2xl font-bold text-primary">Knightly</div>
               </Link>
+
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex space-x-1">
