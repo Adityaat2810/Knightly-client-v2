@@ -86,7 +86,7 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            <h2 className="text-3xl md:text-5xl font-semibold text-foreground">
               Why Choose Knightly?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -98,13 +98,13 @@ export default function HomePage() {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="p-8 hover:shadow-medium transition-all duration-300 bg-card border-2"
+                className="p-8 hover:shadow-medium transition-all duration-300 bg-card border-1"
               >
                 <div className="space-y-4">
-                  <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <div className="w-20 h-20 bg-[#48b8cc80] rounded-2xl flex items-center justify-center text-sm">
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">
+                  <h3 className="text-2xl font-semibold text-foreground">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -126,17 +126,11 @@ export default function HomePage() {
                 <Image
                   src="/assets/knightly-2.png"
                   alt="Knightly mascot - a cheerful knight character holding a smartphone displaying a chess game with the text 'Checkmate in seconds'"
-                  width={400}
-                  height={400}
+                  width={600}
+                  height={600}
                   className="w-full h-auto rounded-2xl shadow-medium"
                   priority
                 />
-              </p>
-              <h3 className="text-3xl font-bold text-foreground">
-                Sketchy Chess Pieces Illustration
-              </h3>
-              <p className="text-muted-foreground">
-                Hand-drawn style illustrations of chess pieces in various playful poses
               </p>
             </div>
           </div>
@@ -144,16 +138,16 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-5xl font-semibold text-foreground">
             Ready to Make Your Move?
           </h2>
           <p className="text-xl text-muted-foreground">
             Join the community and start playing chess in real-time today
           </p>
           <Link href="/game">
-            <Button size="lg" className="text-lg px-12 py-6 shadow-medium hover:shadow-soft transition-all">
+            <Button variant="outline" size="lg" className="text-lg px-12 py-6 shadow-medium hover:shadow-soft transition-all bg-[#48b8cc80]">
               Join a Game
             </Button>
           </Link>

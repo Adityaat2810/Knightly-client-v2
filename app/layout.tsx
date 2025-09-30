@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={dmSans.variable} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         {/* Navigation */}
         <nav className="bg-background/80 backdrop-blur-sm  border-border sticky top-0 z-50">
