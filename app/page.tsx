@@ -47,7 +47,7 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/game">
+                <Link href="/login">
                   <Button
                     variant="outline" size="lg"
                     className="bg-[#48b8cc80] text-lg px-8 py-6 shadow-medium hover:shadow-soft transition-all"
