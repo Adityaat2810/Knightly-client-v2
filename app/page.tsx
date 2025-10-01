@@ -124,7 +124,7 @@ export default function HomePage() {
             <div className="max-w-3xl mx-auto space-y-4">
               <p className="text-sm uppercase tracking-wider text-muted-foreground font-medium">
                 <Image
-                  src="/assets/knightly-2.png"
+                  src="/assets/knightly-3.png"
                   alt="Knightly mascot - a cheerful knight character holding a smartphone displaying a chess game with the text 'Checkmate in seconds'"
                   width={600}
                   height={600}
