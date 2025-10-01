@@ -1,16 +1,53 @@
 "use client"
 
+import { saveToken } from '@/lib/auth';
 import { Github, User } from 'lucide-react';
 import { useRef } from 'react';
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function HomePage() {
   const guestName = useRef<HTMLInputElement>(null);
 
   const handleGitHubLogin = ()=>{
+    // why getting undefined here?
 
+    const uri=process.env.NEXT_PUBLIC_BACKEND_URL+"/auth/github";
+    console.log("Redirecting to ",uri);
+    window.location.href=uri;
   }
+
   const loginAsGuest = async () => {
+    try{
+      const response = await fetch(`${BACKEND_URL}/auth/guest`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          name: (guestName.current && guestName.current.value) || '',
+        }),
+      });
+
+      if(!response.ok){
+        throw new Error("Guest login failed")
+      }
+
+      const data = await response.json();
+      console.log("Guest user:", data);
+
+      if (data.token) {
+        saveToken(data.token);
+      }
+
+      window.location.href = "/dashboard";
+
+    }catch(err){
+      console.error("Guest login error:", err);
+    }
   }
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8 md:p-10 text-center">
