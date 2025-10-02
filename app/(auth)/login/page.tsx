@@ -1,13 +1,19 @@
 "use client"
 
-import { saveToken } from '@/lib/auth';
+import { isLoggedIn, saveToken } from '@/lib/auth';
 import { Github, User } from 'lucide-react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function HomePage() {
   const guestName = useRef<HTMLInputElement>(null);
+
+  useEffect(()=>{
+    if(isLoggedIn()){
+      window.location.href="/dashboard";
+    }
+  },[])
 
   const handleGitHubLogin = ()=>{
     // why getting undefined here?
