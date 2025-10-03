@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { Zap, Check } from "lucide-react";
+import { useSocket } from "@/lib/hooks/useSocket";
+import { INIT_GAME } from "@/lib/types";
 
 export default function StartGameCard() {
   const [roomId, setRoomId] = useState("");
   const [copied, setCopied] = useState(false);
+  const { socket, connectionStatus } = useSocket();
+
 
   const handleCreate = () => {
     const newId = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -14,6 +18,14 @@ export default function StartGameCard() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+
+
+  const handleStartGame = () => {
+    if (!socket) return;
+    socket.send(JSON.stringify({ type: INIT_GAME }));
+  };
+
 
   const handleJoin = () => {
     if (!roomId) return;
@@ -51,7 +63,7 @@ export default function StartGameCard() {
             className="w-full px-4 py-3 border border-slate-800 rounded-xl focus:outline-none focus:border-blue-400 transition-colors text-center font-light tracking-wider"
           />
           <button
-            onClick={handleJoin}
+            onClick={handleCreate}
             disabled={!roomId}
             className="w-full border border-blue-500 hover:bg-blue-500 hover:text-white disabled:border-slate-800 disabled:text-slate-300 disabled:cursor-not-allowed text-blue-500 font-light py-3 px-6 rounded-xl transition-all duration-300"
           >
