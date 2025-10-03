@@ -53,15 +53,17 @@ export default function ChessDashboard() {
   return (
     <div className="min-h-screen p-8 md:p-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Recent Games */}
-        <div className="lg:col-span-8">
-          <GameHistory games={[...(profileData.gamesAsWhite || []), ...(profileData.gamesAsBlack || [])]} />
-        </div>
+
 
         {/* Sidebar */}
         <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-8 lg:self-start">
           <ProfileCard profile={profileData} />
           <StartGameCard />
+        </div>
+
+        {/* Recent Games */}
+        <div className="lg:col-span-8">
+          <GameHistory games={[...(profileData.gamesAsWhite || []), ...(profileData.gamesAsBlack || [])]} />
         </div>
       </div>
     </div>

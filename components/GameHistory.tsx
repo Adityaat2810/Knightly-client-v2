@@ -32,7 +32,7 @@ export default function GameHistory({ games }: { games: any[] }) {
           return (
             <div
               key={game.id}
-              className="group relative border border-slate-200 rounded-2xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-300 bg-white"
+              className="group relative border border-slate-600 rounded-2xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-300 bg-white"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">

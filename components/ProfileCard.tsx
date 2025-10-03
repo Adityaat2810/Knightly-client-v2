@@ -9,7 +9,7 @@ export default function ProfileCard({ profile }: { profile: any }) {
   const draws = totalGames.filter(g => g.result === "DRAW").length;
 
   return (
-    <div className="border border-slate-200 rounded-2xl p-6 bg-white">
+    <div className="border border-slate-600 rounded-2xl p-6 bg-white">
       <div className="flex items-center gap-4 mb-6">
         <div className="w-14 h-14 rounded-full border-2 border-blue-400 flex items-center justify-center text-slate-900 text-xl font-light">
           {name.charAt(0)}
