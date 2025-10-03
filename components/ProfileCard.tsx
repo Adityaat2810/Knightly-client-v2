@@ -1,34 +1,47 @@
-"use client";
-
-import { Card } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
 import { Trophy } from "lucide-react";
 
-export function ProfileCard({ userStats }: { userStats: any }) {
-    return (
-        <Card className="p-6 shadow-medium text-center bg-white">
-            <div className="space-y-4">
-                <div className="flex justify-center">
-                    <Avatar className="w-32 h-32 border-4 border-[#48b8cc80]">
-                        <div className="w-full h-full bg-secondary flex items-center justify-center text-5xl font-bold">
-                            {userStats.name.charAt(0)}
-                        </div>
-                    </Avatar>
-                </div>
-                <div>
-                    <h2 className="text-2xl font-bold mb-1">{userStats.name}</h2>
-                    <p className="text-muted-foreground">Member since {userStats.joinDate}</p>
-                </div>
-                <div className="pt-4">
-                    <div className="inline-flex items-center gap-2 bg-[#48b8cc80]/10 px-4 py-2 rounded-full">
-                        <Trophy className="w-5 h-5 text-[#48b8cc80]" />
-                        <span className="font-bold text-[#48b8cc80] text-lg">
-                            {userStats.rating}
-                        </span>
-                        <span className="text-sm text-muted-foreground">Rating</span>
-                    </div>
-                </div>
-            </div>
-        </Card>
-    );
+export default function ProfileCard({ profile }: { profile: any }) {
+  const { name, createdAt, rating, gamesAsWhite, gamesAsBlack } = profile;
+
+  const totalGames = [...(gamesAsWhite || []), ...(gamesAsBlack || [])];
+  const wins = totalGames.filter(g => g.result?.includes("WINS")).length;
+  const losses = totalGames.filter(g => g.result?.includes("LOSES")).length;
+  const draws = totalGames.filter(g => g.result === "DRAW").length;
+
+  return (
+    <div className="border border-slate-200 rounded-2xl p-6 bg-white">
+      <div className="flex items-center gap-4 mb-6">
+        <div className="w-14 h-14 rounded-full border-2 border-blue-400 flex items-center justify-center text-slate-900 text-xl font-light">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <h3 className="text-lg font-light text-slate-900">{name}</h3>
+          <p className="text-sm text-slate-400 font-light">
+            Joined {new Date(createdAt).toLocaleDateString()}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 mb-6">
+        <Trophy className="w-5 h-5 text-blue-500" />
+        <span className="text-3xl font-light text-slate-900">{rating}</span>
+        <span className="text-sm text-slate-400 font-light">rating</span>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200">
+        <div>
+          <div className="text-2xl font-light text-slate-900">{wins}</div>
+          <div className="text-xs text-slate-400 font-light">Wins</div>
+        </div>
+        <div>
+          <div className="text-2xl font-light text-slate-900">{draws}</div>
+          <div className="text-xs text-slate-400 font-light">Draws</div>
+        </div>
+        <div>
+          <div className="text-2xl font-light text-slate-900">{losses}</div>
+          <div className="text-xs text-slate-400 font-light">Losses</div>
+        </div>
+      </div>
+    </div>
+  );
 }
